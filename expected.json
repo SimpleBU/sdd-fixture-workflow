@@ -1,0 +1,2721 @@
+{
+  "app": "workflow",
+  "title": "SDD testbed — процессы и доставка",
+  "fields": [
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:param:taskId",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "param",
+      "in": "path",
+      "name": "taskId",
+      "rel_path": "taskId",
+      "label_ref": "param:GET /v1/tasks/{taskId}:taskId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:id",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:TaskDto.id",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:name",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "name",
+      "rel_path": "name",
+      "label_ref": "dto:TaskDto.name",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:assignee",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "assignee",
+      "rel_path": "assignee",
+      "label_ref": "dto:TaskDto.assignee",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:candidateUsers",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "candidateUsers",
+      "rel_path": "candidateUsers",
+      "label_ref": "dto:TaskDto.candidateUsers",
+      "type": "List<String>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "candidate_users — шаблон знает candidate_user(_id)"
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:candidateGroups",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "candidateGroups",
+      "rel_path": "candidateGroups",
+      "label_ref": "dto:TaskDto.candidateGroups",
+      "type": "List<String>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:owner",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "owner",
+      "rel_path": "owner",
+      "label_ref": "dto:TaskDto.owner",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:createdBy",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "createdBy",
+      "rel_path": "createdBy",
+      "label_ref": "dto:TaskDto.createdBy",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:dueDate",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "dueDate",
+      "rel_path": "dueDate",
+      "label_ref": "dto:TaskDto.dueDate",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:priority",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "priority",
+      "rel_path": "priority",
+      "label_ref": "dto:TaskDto.priority",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:description",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "description",
+      "rel_path": "description",
+      "label_ref": "dto:TaskDto.description",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:variables",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "variables",
+      "rel_path": "variables",
+      "label_ref": "dto:TaskDto.variables",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:formKey",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "formKey",
+      "rel_path": "formKey",
+      "label_ref": "dto:TaskDto.formKey",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}:response:processInstanceId",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "location": "response_body",
+      "name": "processInstanceId",
+      "rel_path": "processInstanceId",
+      "label_ref": "dto:TaskDto.processInstanceId",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:assignee",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "assignee",
+      "rel_path": "assignee",
+      "json_path_rc": "$.query.assignee",
+      "label_ref": "dto:TaskSearchRequest.assignee",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:completedBy",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "completedBy",
+      "rel_path": "completedBy",
+      "json_path_rc": "$.query.completedBy",
+      "label_ref": "dto:TaskSearchRequest.completedBy",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:candidateUserId",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "candidateUserId",
+      "rel_path": "candidateUserId",
+      "json_path_rc": "$.query.candidateUserId",
+      "label_ref": "dto:TaskSearchRequest.candidateUserId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:candidateGroupId",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "candidateGroupId",
+      "rel_path": "candidateGroupId",
+      "json_path_rc": "$.query.candidateGroupId",
+      "label_ref": "dto:TaskSearchRequest.candidateGroupId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": "группа, не человек; в критериях SDD-ENG-3 упоминается — спорно"
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:processDefinitionKey",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "processDefinitionKey",
+      "rel_path": "processDefinitionKey",
+      "json_path_rc": "$.query.processDefinitionKey",
+      "label_ref": "dto:TaskSearchRequest.processDefinitionKey",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:ownership",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "ownership",
+      "rel_path": "ownership",
+      "json_path_rc": "$.query.ownership",
+      "label_ref": "dto:TaskSearchRequest.ownership",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "тип владения задачей (из no_match правила)"
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:request:createdAfter",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "request_body",
+      "name": "createdAfter",
+      "rel_path": "createdAfter",
+      "json_path_rc": "$.query.createdAfter",
+      "label_ref": "dto:TaskSearchRequest.createdAfter",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:id",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:TaskDto.id",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:name",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "name",
+      "rel_path": "name",
+      "label_ref": "dto:TaskDto.name",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:assignee",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "assignee",
+      "rel_path": "assignee",
+      "label_ref": "dto:TaskDto.assignee",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:candidateUsers",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "candidateUsers",
+      "rel_path": "candidateUsers",
+      "label_ref": "dto:TaskDto.candidateUsers",
+      "type": "List<String>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "candidate_users — шаблон знает candidate_user(_id)"
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:candidateGroups",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "candidateGroups",
+      "rel_path": "candidateGroups",
+      "label_ref": "dto:TaskDto.candidateGroups",
+      "type": "List<String>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:owner",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "owner",
+      "rel_path": "owner",
+      "label_ref": "dto:TaskDto.owner",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:createdBy",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "createdBy",
+      "rel_path": "createdBy",
+      "label_ref": "dto:TaskDto.createdBy",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:dueDate",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "dueDate",
+      "rel_path": "dueDate",
+      "label_ref": "dto:TaskDto.dueDate",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:priority",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "priority",
+      "rel_path": "priority",
+      "label_ref": "dto:TaskDto.priority",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:description",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "description",
+      "rel_path": "description",
+      "label_ref": "dto:TaskDto.description",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:variables",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "variables",
+      "rel_path": "variables",
+      "label_ref": "dto:TaskDto.variables",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:formKey",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "formKey",
+      "rel_path": "formKey",
+      "label_ref": "dto:TaskDto.formKey",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search:response:processInstanceId",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "location": "response_body",
+      "name": "processInstanceId",
+      "rel_path": "processInstanceId",
+      "label_ref": "dto:TaskDto.processInstanceId",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/complete:param:taskId",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/complete",
+      "location": "param",
+      "in": "path",
+      "name": "taskId",
+      "rel_path": "taskId",
+      "label_ref": "param:POST /v1/tasks/{taskId}/complete:taskId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/complete:request:variables",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/complete",
+      "location": "request_body",
+      "name": "variables",
+      "rel_path": "",
+      "json_path_rc": "$.variables",
+      "label_ref": "body:POST /v1/tasks/{taskId}/complete",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}/variables:param:taskId",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}/variables",
+      "location": "param",
+      "in": "path",
+      "name": "taskId",
+      "rel_path": "taskId",
+      "label_ref": "param:GET /v1/tasks/{taskId}/variables:taskId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}/variables:response:name",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}/variables",
+      "location": "response_body",
+      "name": "name",
+      "rel_path": "name",
+      "label_ref": "dto:VariableDto.name",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}/variables:response:type",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}/variables",
+      "location": "response_body",
+      "name": "type",
+      "rel_path": "type",
+      "label_ref": "dto:VariableDto.type",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}/variables:response:value",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}/variables",
+      "location": "response_body",
+      "name": "value",
+      "rel_path": "value",
+      "label_ref": "dto:VariableDto.value",
+      "type": "Object",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /v1/tasks/{taskId}/variables/{variableName}:param:taskId",
+      "method": "PUT",
+      "path": "/v1/tasks/{taskId}/variables/{variableName}",
+      "location": "param",
+      "in": "path",
+      "name": "taskId",
+      "rel_path": "taskId",
+      "label_ref": "param:PUT /v1/tasks/{taskId}/variables/{variableName}:taskId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /v1/tasks/{taskId}/variables/{variableName}:param:variableName",
+      "method": "PUT",
+      "path": "/v1/tasks/{taskId}/variables/{variableName}",
+      "location": "param",
+      "in": "path",
+      "name": "variableName",
+      "rel_path": "variableName",
+      "label_ref": "param:PUT /v1/tasks/{taskId}/variables/{variableName}:variableName",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /v1/tasks/{taskId}/variables/{variableName}:request:name",
+      "method": "PUT",
+      "path": "/v1/tasks/{taskId}/variables/{variableName}",
+      "location": "request_body",
+      "name": "name",
+      "rel_path": "name",
+      "json_path_rc": "$.variable.name",
+      "label_ref": "dto:VariableDto.name",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /v1/tasks/{taskId}/variables/{variableName}:request:type",
+      "method": "PUT",
+      "path": "/v1/tasks/{taskId}/variables/{variableName}",
+      "location": "request_body",
+      "name": "type",
+      "rel_path": "type",
+      "json_path_rc": "$.variable.type",
+      "label_ref": "dto:VariableDto.type",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /v1/tasks/{taskId}/variables/{variableName}:request:value",
+      "method": "PUT",
+      "path": "/v1/tasks/{taskId}/variables/{variableName}",
+      "location": "request_body",
+      "name": "value",
+      "rel_path": "value",
+      "json_path_rc": "$.variable.value",
+      "label_ref": "dto:VariableDto.value",
+      "type": "Object",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:param:taskId",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "param",
+      "in": "path",
+      "name": "taskId",
+      "rel_path": "taskId",
+      "label_ref": "param:POST /v1/tasks/{taskId}/comments:taskId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:request:id",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "request_body",
+      "name": "id",
+      "rel_path": "id",
+      "json_path_rc": "$.comment.id",
+      "label_ref": "dto:CommentDto.id",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:request:author",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "request_body",
+      "name": "author",
+      "rel_path": "author",
+      "json_path_rc": "$.comment.author",
+      "label_ref": "dto:CommentDto.author",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:request:message",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "request_body",
+      "name": "message",
+      "rel_path": "message",
+      "json_path_rc": "$.comment.message",
+      "label_ref": "dto:CommentDto.message",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:request:attachmentsCount",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "request_body",
+      "name": "attachmentsCount",
+      "rel_path": "attachmentsCount",
+      "json_path_rc": "$.comment.attachmentsCount",
+      "label_ref": "dto:CommentDto.attachmentsCount",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:request:createdAt",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "request_body",
+      "name": "createdAt",
+      "rel_path": "createdAt",
+      "json_path_rc": "$.comment.createdAt",
+      "label_ref": "dto:CommentDto.createdAt",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:response:id",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:CommentDto.id",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:response:author",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "response_body",
+      "name": "author",
+      "rel_path": "author",
+      "label_ref": "dto:CommentDto.author",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:response:message",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "response_body",
+      "name": "message",
+      "rel_path": "message",
+      "label_ref": "dto:CommentDto.message",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:response:attachmentsCount",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "response_body",
+      "name": "attachmentsCount",
+      "rel_path": "attachmentsCount",
+      "label_ref": "dto:CommentDto.attachmentsCount",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments:response:createdAt",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "location": "response_body",
+      "name": "createdAt",
+      "rel_path": "createdAt",
+      "label_ref": "dto:CommentDto.createdAt",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/process-instances:request:processDefinitionKey",
+      "method": "POST",
+      "path": "/v1/process-instances",
+      "location": "request_body",
+      "name": "processDefinitionKey",
+      "rel_path": "processDefinitionKey",
+      "json_path_rc": "$.start.processDefinitionKey",
+      "label_ref": "dto:ProcessStartRequest.processDefinitionKey",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/process-instances:request:businessKey",
+      "method": "POST",
+      "path": "/v1/process-instances",
+      "location": "request_body",
+      "name": "businessKey",
+      "rel_path": "businessKey",
+      "json_path_rc": "$.start.businessKey",
+      "label_ref": "dto:ProcessStartRequest.businessKey",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": "часто номер договора или клиента"
+    },
+    {
+      "id": "workflow:POST /v1/process-instances:request:initiator",
+      "method": "POST",
+      "path": "/v1/process-instances",
+      "location": "request_body",
+      "name": "initiator",
+      "rel_path": "initiator",
+      "json_path_rc": "$.start.initiator",
+      "label_ref": "dto:ProcessStartRequest.initiator",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/process-instances:request:variables",
+      "method": "POST",
+      "path": "/v1/process-instances",
+      "location": "request_body",
+      "name": "variables",
+      "rel_path": "variables",
+      "json_path_rc": "$.start.variables",
+      "label_ref": "dto:ProcessStartRequest.variables",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/process-instances/{processInstanceId}/variables:param:processInstanceId",
+      "method": "GET",
+      "path": "/v1/process-instances/{processInstanceId}/variables",
+      "location": "param",
+      "in": "path",
+      "name": "processInstanceId",
+      "rel_path": "processInstanceId",
+      "label_ref": "param:GET /v1/process-instances/{processInstanceId}/variables:processInstanceId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/process-instances/{processInstanceId}/variables:response:$",
+      "method": "GET",
+      "path": "/v1/process-instances/{processInstanceId}/variables",
+      "location": "response_body",
+      "name": "$",
+      "rel_path": "",
+      "label_ref": "resp:GET /v1/process-instances/{processInstanceId}/variables",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": "все переменные процесса"
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:param:courierId",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "param",
+      "in": "path",
+      "name": "courierId",
+      "rel_path": "courierId",
+      "label_ref": "param:POST /api/couriers/{courierId}/locations:courierId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:courierId",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "courierId",
+      "rel_path": "courierId",
+      "json_path_rc": "$.location.courierId",
+      "label_ref": "dto:CourierLocationDto.courierId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "courier_id — нет в списке идентификаторов"
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:lat",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "lat",
+      "rel_path": "lat",
+      "json_path_rc": "$.location.lat",
+      "label_ref": "dto:CourierLocationDto.lat",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:lng",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "lng",
+      "rel_path": "lng",
+      "json_path_rc": "$.location.lng",
+      "label_ref": "dto:CourierLocationDto.lng",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:accuracy",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "accuracy",
+      "rel_path": "accuracy",
+      "json_path_rc": "$.location.accuracy",
+      "label_ref": "dto:CourierLocationDto.accuracy",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:deviceId",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "deviceId",
+      "rel_path": "deviceId",
+      "json_path_rc": "$.location.deviceId",
+      "label_ref": "dto:CourierLocationDto.deviceId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:imei",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "imei",
+      "rel_path": "imei",
+      "json_path_rc": "$.location.imei",
+      "label_ref": "dto:CourierLocationDto.imei",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:batteryLevel",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "batteryLevel",
+      "rel_path": "batteryLevel",
+      "json_path_rc": "$.location.batteryLevel",
+      "label_ref": "dto:CourierLocationDto.batteryLevel",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations:request:recordedAt",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "request_body",
+      "name": "recordedAt",
+      "rel_path": "recordedAt",
+      "json_path_rc": "$.location.recordedAt",
+      "label_ref": "dto:CourierLocationDto.recordedAt",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:param:courierId",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "param",
+      "in": "path",
+      "name": "courierId",
+      "rel_path": "courierId",
+      "label_ref": "param:GET /api/couriers/{courierId}/locations:courierId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:param:from",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "param",
+      "in": "query",
+      "name": "from",
+      "rel_path": "from",
+      "label_ref": "param:GET /api/couriers/{courierId}/locations:from",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:param:to",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "param",
+      "in": "query",
+      "name": "to",
+      "rel_path": "to",
+      "label_ref": "param:GET /api/couriers/{courierId}/locations:to",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:courierId",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "courierId",
+      "rel_path": "courierId",
+      "label_ref": "dto:CourierLocationDto.courierId",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "courier_id — нет в списке идентификаторов"
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:lat",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "lat",
+      "rel_path": "lat",
+      "label_ref": "dto:CourierLocationDto.lat",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:lng",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "lng",
+      "rel_path": "lng",
+      "label_ref": "dto:CourierLocationDto.lng",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:accuracy",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "accuracy",
+      "rel_path": "accuracy",
+      "label_ref": "dto:CourierLocationDto.accuracy",
+      "type": "BigDecimal",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:deviceId",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "deviceId",
+      "rel_path": "deviceId",
+      "label_ref": "dto:CourierLocationDto.deviceId",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:imei",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "imei",
+      "rel_path": "imei",
+      "label_ref": "dto:CourierLocationDto.imei",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:batteryLevel",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "batteryLevel",
+      "rel_path": "batteryLevel",
+      "label_ref": "dto:CourierLocationDto.batteryLevel",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations:response:recordedAt",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "location": "response_body",
+      "name": "recordedAt",
+      "rel_path": "recordedAt",
+      "label_ref": "dto:CourierLocationDto.recordedAt",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:param:deliveryId",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "param",
+      "in": "path",
+      "name": "deliveryId",
+      "rel_path": "deliveryId",
+      "label_ref": "param:GET /api/deliveries/{deliveryId}:deliveryId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:id",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:DeliveryDto.id",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:recipientName",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "recipientName",
+      "rel_path": "recipientName",
+      "label_ref": "dto:DeliveryDto.recipientName",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:recipientPhone",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "recipientPhone",
+      "rel_path": "recipientPhone",
+      "label_ref": "dto:DeliveryDto.recipientPhone",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:deliveryAddress",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "deliveryAddress",
+      "rel_path": "deliveryAddress",
+      "label_ref": "dto:DeliveryDto.deliveryAddress",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "delivery_address — шаблон знает home/mailing/postal, но не delivery"
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:coordinates",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "coordinates",
+      "rel_path": "coordinates",
+      "label_ref": "dto:DeliveryDto.coordinates",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:courierComment",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "courierComment",
+      "rel_path": "courierComment",
+      "label_ref": "dto:DeliveryDto.courierComment",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}:response:status",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "location": "response_body",
+      "name": "status",
+      "rel_path": "status",
+      "label_ref": "dto:DeliveryDto.status",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:param:date",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "param",
+      "in": "query",
+      "name": "date",
+      "rel_path": "date",
+      "label_ref": "param:GET /api/deliveries/export:date",
+      "type": "LocalDate",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:id",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "id",
+      "rel_path": "id",
+      "label_ref": "dto:DeliveryDto.id",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:recipientName",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "recipientName",
+      "rel_path": "recipientName",
+      "label_ref": "dto:DeliveryDto.recipientName",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:recipientPhone",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "recipientPhone",
+      "rel_path": "recipientPhone",
+      "label_ref": "dto:DeliveryDto.recipientPhone",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:deliveryAddress",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "deliveryAddress",
+      "rel_path": "deliveryAddress",
+      "label_ref": "dto:DeliveryDto.deliveryAddress",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "delivery_address — шаблон знает home/mailing/postal, но не delivery"
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:coordinates",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "coordinates",
+      "rel_path": "coordinates",
+      "label_ref": "dto:DeliveryDto.coordinates",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:courierComment",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "courierComment",
+      "rel_path": "courierComment",
+      "label_ref": "dto:DeliveryDto.courierComment",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "hard",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export:response:status",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "location": "response_body",
+      "name": "status",
+      "rel_path": "status",
+      "label_ref": "dto:DeliveryDto.status",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}:param:source",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "location": "param",
+      "in": "path",
+      "name": "source",
+      "rel_path": "source",
+      "label_ref": "param:POST /hooks/{source}:source",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}:param:X-Hub-Signature",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "location": "param",
+      "in": "header",
+      "name": "X-Hub-Signature",
+      "rel_path": "X-Hub-Signature",
+      "label_ref": "param:POST /hooks/{source}:X-Hub-Signature",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}:request:eventType",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "location": "request_body",
+      "name": "eventType",
+      "rel_path": "eventType",
+      "json_path_rc": "$.event.eventType",
+      "label_ref": "dto:WebhookEventDto.eventType",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}:request:payload",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "location": "request_body",
+      "name": "payload",
+      "rel_path": "payload",
+      "json_path_rc": "$.event.payload",
+      "label_ref": "dto:WebhookEventDto.payload",
+      "type": "JsonNode",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}:request:metadata",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "location": "request_body",
+      "name": "metadata",
+      "rel_path": "metadata",
+      "json_path_rc": "$.event.metadata",
+      "label_ref": "dto:WebhookEventDto.metadata",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}:request:receivedAt",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "location": "request_body",
+      "name": "receivedAt",
+      "rel_path": "receivedAt",
+      "json_path_rc": "$.event.receivedAt",
+      "label_ref": "dto:WebhookEventDto.receivedAt",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/forms/{formId}/submissions:param:formId",
+      "method": "POST",
+      "path": "/api/forms/{formId}/submissions",
+      "location": "param",
+      "in": "path",
+      "name": "formId",
+      "rel_path": "formId",
+      "label_ref": "param:POST /api/forms/{formId}/submissions:formId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/forms/{formId}/submissions:request:formId",
+      "method": "POST",
+      "path": "/api/forms/{formId}/submissions",
+      "location": "request_body",
+      "name": "formId",
+      "rel_path": "formId",
+      "json_path_rc": "$.submission.formId",
+      "label_ref": "dto:FormSubmissionDto.formId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/forms/{formId}/submissions:request:formData",
+      "method": "POST",
+      "path": "/api/forms/{formId}/submissions",
+      "location": "request_body",
+      "name": "formData",
+      "rel_path": "formData",
+      "json_path_rc": "$.submission.formData",
+      "label_ref": "dto:FormSubmissionDto.formData",
+      "type": "Map<String, Object>",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/forms/{formId}/submissions:request:submittedBy",
+      "method": "POST",
+      "path": "/api/forms/{formId}/submissions",
+      "location": "request_body",
+      "name": "submittedBy",
+      "rel_path": "submittedBy",
+      "json_path_rc": "$.submission.submittedBy",
+      "label_ref": "dto:FormSubmissionDto.submittedBy",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "submitted_by — нет в списке участников"
+    },
+    {
+      "id": "workflow:POST /api/forms/{formId}/submissions:request:submittedAt",
+      "method": "POST",
+      "path": "/api/forms/{formId}/submissions",
+      "location": "request_body",
+      "name": "submittedAt",
+      "rel_path": "submittedAt",
+      "json_path_rc": "$.submission.submittedAt",
+      "label_ref": "dto:FormSubmissionDto.submittedAt",
+      "type": "Instant",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/notifications:request:recipient",
+      "method": "POST",
+      "path": "/api/notifications",
+      "location": "request_body",
+      "name": "recipient",
+      "rel_path": "recipient",
+      "json_path_rc": "$.notification.recipient",
+      "label_ref": "dto:NotificationDto.recipient",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "адрес получателя (email/телефон)"
+    },
+    {
+      "id": "workflow:POST /api/notifications:request:subject",
+      "method": "POST",
+      "path": "/api/notifications",
+      "location": "request_body",
+      "name": "subject",
+      "rel_path": "subject",
+      "json_path_rc": "$.notification.subject",
+      "label_ref": "dto:NotificationDto.subject",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "тема письма, не субъект"
+    },
+    {
+      "id": "workflow:POST /api/notifications:request:body",
+      "method": "POST",
+      "path": "/api/notifications",
+      "location": "request_body",
+      "name": "body",
+      "rel_path": "body",
+      "json_path_rc": "$.notification.body",
+      "label_ref": "dto:NotificationDto.body",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "DYNAMIC",
+      "accept": [],
+      "kind": "positive",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/notifications:request:messageId",
+      "method": "POST",
+      "path": "/api/notifications",
+      "location": "request_body",
+      "name": "messageId",
+      "rel_path": "messageId",
+      "json_path_rc": "$.notification.messageId",
+      "label_ref": "dto:NotificationDto.messageId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/notifications:request:reasonCode",
+      "method": "POST",
+      "path": "/api/notifications",
+      "location": "request_body",
+      "name": "reasonCode",
+      "rel_path": "reasonCode",
+      "json_path_rc": "$.notification.reasonCode",
+      "label_ref": "dto:NotificationDto.reasonCode",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/notifications:request:template",
+      "method": "POST",
+      "path": "/api/notifications",
+      "location": "request_body",
+      "name": "template",
+      "rel_path": "template",
+      "json_path_rc": "$.notification.template",
+      "label_ref": "dto:NotificationDto.template",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:param:integrationId",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "param",
+      "in": "path",
+      "name": "integrationId",
+      "rel_path": "integrationId",
+      "label_ref": "param:GET /api/integrations/{integrationId}/settings:integrationId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:response:dataSource",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "response_body",
+      "name": "dataSource",
+      "rel_path": "dataSource",
+      "label_ref": "dto:IntegrationSettingsDto.dataSource",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:response:database",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "response_body",
+      "name": "database",
+      "rel_path": "database",
+      "label_ref": "dto:IntegrationSettingsDto.database",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:response:contentType",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "response_body",
+      "name": "contentType",
+      "rel_path": "contentType",
+      "label_ref": "dto:IntegrationSettingsDto.contentType",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:response:metadataVersion",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "response_body",
+      "name": "metadataVersion",
+      "rel_path": "metadataVersion",
+      "label_ref": "dto:IntegrationSettingsDto.metadataVersion",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:response:endpointUrl",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "response_body",
+      "name": "endpointUrl",
+      "rel_path": "endpointUrl",
+      "label_ref": "dto:IntegrationSettingsDto.endpointUrl",
+      "type": "String",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings:response:timeoutMs",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "response_body",
+      "name": "timeoutMs",
+      "rel_path": "timeoutMs",
+      "label_ref": "dto:IntegrationSettingsDto.timeoutMs",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": false,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:param:integrationId",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "param",
+      "in": "path",
+      "name": "integrationId",
+      "rel_path": "integrationId",
+      "label_ref": "param:PUT /api/integrations/{integrationId}/settings:integrationId",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:request:dataSource",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "request_body",
+      "name": "dataSource",
+      "rel_path": "dataSource",
+      "json_path_rc": "$.settings.dataSource",
+      "label_ref": "dto:IntegrationSettingsDto.dataSource",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:request:database",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "request_body",
+      "name": "database",
+      "rel_path": "database",
+      "json_path_rc": "$.settings.database",
+      "label_ref": "dto:IntegrationSettingsDto.database",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:request:contentType",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "request_body",
+      "name": "contentType",
+      "rel_path": "contentType",
+      "json_path_rc": "$.settings.contentType",
+      "label_ref": "dto:IntegrationSettingsDto.contentType",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:request:metadataVersion",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "request_body",
+      "name": "metadataVersion",
+      "rel_path": "metadataVersion",
+      "json_path_rc": "$.settings.metadataVersion",
+      "label_ref": "dto:IntegrationSettingsDto.metadataVersion",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:request:endpointUrl",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "request_body",
+      "name": "endpointUrl",
+      "rel_path": "endpointUrl",
+      "json_path_rc": "$.settings.endpointUrl",
+      "label_ref": "dto:IntegrationSettingsDto.endpointUrl",
+      "type": "String",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings:request:timeoutMs",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "location": "request_body",
+      "name": "timeoutMs",
+      "rel_path": "timeoutMs",
+      "json_path_rc": "$.settings.timeoutMs",
+      "label_ref": "dto:IntegrationSettingsDto.timeoutMs",
+      "type": "Integer",
+      "observable": {
+        "route_candidates": true,
+        "openapi": true
+      },
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}",
+      "handler": "TaskController.getTask",
+      "expect": [],
+      "allow": [
+        "DYNAMIC",
+        "PII_INDIRECT"
+      ],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/search",
+      "method": "POST",
+      "path": "/v1/tasks/search",
+      "handler": "TaskController.searchTasks",
+      "expect": [],
+      "allow": [
+        "DYNAMIC"
+      ],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": true
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/complete",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/complete",
+      "handler": "TaskController.completeTask",
+      "expect": [
+        "DYNAMIC"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/tasks/{taskId}/variables",
+      "method": "GET",
+      "path": "/v1/tasks/{taskId}/variables",
+      "handler": "TaskController.getTaskVariables",
+      "expect": [
+        "DYNAMIC"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /v1/tasks/{taskId}/variables/{variableName}",
+      "method": "PUT",
+      "path": "/v1/tasks/{taskId}/variables/{variableName}",
+      "handler": "TaskController.updateTaskVariable",
+      "expect": [
+        "DYNAMIC"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/tasks/{taskId}/comments",
+      "method": "POST",
+      "path": "/v1/tasks/{taskId}/comments",
+      "handler": "TaskController.addComment",
+      "expect": [],
+      "allow": [
+        "DYNAMIC"
+      ],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /v1/process-instances",
+      "method": "POST",
+      "path": "/v1/process-instances",
+      "handler": "ProcessInstanceController.startProcess",
+      "expect": [],
+      "allow": [
+        "DYNAMIC"
+      ],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /v1/process-instances/{processInstanceId}/variables",
+      "method": "GET",
+      "path": "/v1/process-instances/{processInstanceId}/variables",
+      "handler": "ProcessInstanceController.getProcessVariables",
+      "expect": [
+        "DYNAMIC"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/couriers/{courierId}/locations",
+      "method": "POST",
+      "path": "/api/couriers/{courierId}/locations",
+      "handler": "CourierTrackingController.reportLocation",
+      "expect": [
+        "PII_INDIRECT"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/couriers/{courierId}/locations",
+      "method": "GET",
+      "path": "/api/couriers/{courierId}/locations",
+      "handler": "CourierTrackingController.trackHistory",
+      "expect": [
+        "PII_INDIRECT"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/{deliveryId}",
+      "method": "GET",
+      "path": "/api/deliveries/{deliveryId}",
+      "handler": "DeliveryController.getDelivery",
+      "expect": [
+        "PII_DIRECT"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/deliveries/export",
+      "method": "GET",
+      "path": "/api/deliveries/export",
+      "handler": "DeliveryController.exportDeliveries",
+      "expect": [
+        "PII_DIRECT"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": true
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /hooks/{source}",
+      "method": "POST",
+      "path": "/hooks/{source}",
+      "handler": "WebhookController.receive",
+      "expect": [
+        "DYNAMIC"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/forms/{formId}/submissions",
+      "method": "POST",
+      "path": "/api/forms/{formId}/submissions",
+      "handler": "FormController.submit",
+      "expect": [
+        "DYNAMIC"
+      ],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:POST /api/notifications",
+      "method": "POST",
+      "path": "/api/notifications",
+      "handler": "NotificationController.send",
+      "expect": [],
+      "allow": [
+        "DYNAMIC",
+        "PII_DIRECT"
+      ],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:GET /api/integrations/{integrationId}/settings",
+      "method": "GET",
+      "path": "/api/integrations/{integrationId}/settings",
+      "handler": "IntegrationController.getSettings",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    },
+    {
+      "id": "workflow:PUT /api/integrations/{integrationId}/settings",
+      "method": "PUT",
+      "path": "/api/integrations/{integrationId}/settings",
+      "handler": "IntegrationController.updateSettings",
+      "expect": [],
+      "allow": [],
+      "attrs": {
+        "is_admin_path": false,
+        "is_bulk_operation": false
+      },
+      "why": ""
+    }
+  ],
+  "constants": [
+    {
+      "id": "workflow:const:WorkflowDefaults.DEFAULT_ASSIGNEE",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "DEFAULT_ASSIGNEE",
+      "value_preview": "ivan.petrov",
+      "expect": "PII_INDIRECT",
+      "accept": [],
+      "kind": "hard",
+      "why": "логин сотрудника; распознать можно только по имени константы"
+    },
+    {
+      "id": "workflow:const:WorkflowDefaults.ESCALATION_EMAIL",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "ESCALATION_EMAIL",
+      "value_preview": "escalation@company.example",
+      "expect": "GRAY",
+      "accept": [],
+      "kind": "gray",
+      "why": "служебный ящик"
+    },
+    {
+      "id": "workflow:const:WorkflowDefaults.SAMPLE_VARIABLES_JSON",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "SAMPLE_VARIABLES_JSON",
+      "value_preview": "{\"clientName\":\"Петров Иван\",\"phone\":\"+79…",
+      "expect": "PII_DIRECT",
+      "accept": [],
+      "kind": "positive",
+      "why": "ПД внутри JSON-строки"
+    },
+    {
+      "id": "workflow:const:WorkflowDefaults.CALLBACK_HOST",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "CALLBACK_HOST",
+      "value_preview": "198.51.100.23",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "IP сервера колбэков, не пользователя"
+    },
+    {
+      "id": "workflow:const:WorkflowDefaults.INTERNAL_BROKER",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "INTERNAL_BROKER",
+      "value_preview": "172.20.1.15:9092",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:const:WorkflowDefaults.REQUEST_ID_SAMPLE",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "REQUEST_ID_SAMPLE",
+      "value_preview": "550e8400-e29b-41d4-a716-446655440000",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "plain",
+      "why": ""
+    },
+    {
+      "id": "workflow:const:WorkflowDefaults.ENGINE_VERSION",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "symbol": "ENGINE_VERSION",
+      "value_preview": "4.2.0.1",
+      "expect": "NONE",
+      "accept": [],
+      "kind": "trap",
+      "why": "версия похожа на IPv4"
+    }
+  ]
+}

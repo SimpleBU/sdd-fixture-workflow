@@ -1,0 +1,1636 @@
+{
+  "version": "1.0.0",
+  "tool": {
+    "name": "sdd-testbed-generator",
+    "version": "1.0",
+    "note": "эталонная инвентаризация: что должен выдать анализатор на этом коде"
+  },
+  "route_candidates": {
+    "sha256:c8d36aac39593cebec83fe386fc40e4c8b4a60cef503270ad889abd3f377372e": {
+      "candidate_id": "sha256:c8d36aac39593cebec83fe386fc40e4c8b4a60cef503270ad889abd3f377372e",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/TaskController.java",
+      "location": {
+        "start": {
+          "row": 22,
+          "column": 5
+        },
+        "end": {
+          "row": 25,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.TaskController",
+        "name": "getTask"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.List",
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CommentDto",
+          "ru.testbed.workflow.dto.TaskDto",
+          "ru.testbed.workflow.dto.TaskSearchRequest",
+          "ru.testbed.workflow.dto.VariableDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.TaskController"
+      },
+      "resolved": {
+        "sha256:1b81f90b9908dd344b0260289e6b9e9f3306712bd24d596bb798e966278900c7": {
+          "operation_id": "sha256:1b81f90b9908dd344b0260289e6b9e9f3306712bd24d596bb798e966278900c7",
+          "http_method": "GET",
+          "path": {
+            "template": "/v1/tasks/{taskId}",
+            "normalized": "/v1/tasks/{taskId}"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:3652a43d045fc60e0bb17d57c64d4551d610a1997bfbdbcd9491f5379dddbcc8",
+              "name": "taskId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:5bfbbeeb81f0adb63c244342d80ff9e6d055dfba9d35f823f6fc803c73af3d83": {
+      "candidate_id": "sha256:5bfbbeeb81f0adb63c244342d80ff9e6d055dfba9d35f823f6fc803c73af3d83",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/TaskController.java",
+      "location": {
+        "start": {
+          "row": 27,
+          "column": 5
+        },
+        "end": {
+          "row": 30,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.TaskController",
+        "name": "searchTasks"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.List",
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CommentDto",
+          "ru.testbed.workflow.dto.TaskDto",
+          "ru.testbed.workflow.dto.TaskSearchRequest",
+          "ru.testbed.workflow.dto.VariableDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.TaskController"
+      },
+      "resolved": {
+        "sha256:5ed4f5989501b5abc953d1ce1da91c8d401e4bb6f43f267bb45824eb93d4d863": {
+          "operation_id": "sha256:5ed4f5989501b5abc953d1ce1da91c8d401e4bb6f43f267bb45824eb93d4d863",
+          "http_method": "POST",
+          "path": {
+            "template": "/v1/tasks/search",
+            "normalized": "/v1/tasks/search"
+          },
+          "confidence": "high",
+          "parameters": [],
+          "request_body": {
+            "request_body_id": "sha256:1b24231049abfddabb93002c7ab3b0df702205132dbf37017db1e4d2e8596444",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "query",
+                "value_type": {
+                  "kind": "object",
+                  "title": "TaskSearchRequest",
+                  "properties": [
+                    {
+                      "name": "assignee",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "completedBy",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "candidateUserId",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "candidateGroupId",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "processDefinitionKey",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "ownership",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "createdAfter",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:9a77a139417068cd03190d249d7ad9b4a712e54a05778dbd6fe2a16df88861d5": {
+      "candidate_id": "sha256:9a77a139417068cd03190d249d7ad9b4a712e54a05778dbd6fe2a16df88861d5",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/TaskController.java",
+      "location": {
+        "start": {
+          "row": 32,
+          "column": 5
+        },
+        "end": {
+          "row": 35,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.TaskController",
+        "name": "completeTask"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.List",
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CommentDto",
+          "ru.testbed.workflow.dto.TaskDto",
+          "ru.testbed.workflow.dto.TaskSearchRequest",
+          "ru.testbed.workflow.dto.VariableDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.TaskController"
+      },
+      "resolved": {
+        "sha256:2ef8f0b00bff5a196ad0ac1e56f22b296b291b79c8032589f1c140ad1ea6f03f": {
+          "operation_id": "sha256:2ef8f0b00bff5a196ad0ac1e56f22b296b291b79c8032589f1c140ad1ea6f03f",
+          "http_method": "POST",
+          "path": {
+            "template": "/v1/tasks/{taskId}/complete",
+            "normalized": "/v1/tasks/{taskId}/complete"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:b579cc57a5f71469e892de1cecd11d5fe43011c3717f1c6c514377d948a0cc06",
+              "name": "taskId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:d114d3037f73933af89292565357cf3bff779766d2baa6eefd45753b4199a6c8",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "variables",
+                "value_type": {
+                  "kind": "object",
+                  "title": "Map"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:0923474651079678831b69c9c7fef3c5af88c6e6df9acfef5e452aaa9a1a9178": {
+      "candidate_id": "sha256:0923474651079678831b69c9c7fef3c5af88c6e6df9acfef5e452aaa9a1a9178",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/TaskController.java",
+      "location": {
+        "start": {
+          "row": 37,
+          "column": 5
+        },
+        "end": {
+          "row": 40,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.TaskController",
+        "name": "getTaskVariables"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.List",
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CommentDto",
+          "ru.testbed.workflow.dto.TaskDto",
+          "ru.testbed.workflow.dto.TaskSearchRequest",
+          "ru.testbed.workflow.dto.VariableDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.TaskController"
+      },
+      "resolved": {
+        "sha256:0a7285050c6aa8baf3dff8c8b797751e7693dcef2421e0fbc819b0d29e74bcc4": {
+          "operation_id": "sha256:0a7285050c6aa8baf3dff8c8b797751e7693dcef2421e0fbc819b0d29e74bcc4",
+          "http_method": "GET",
+          "path": {
+            "template": "/v1/tasks/{taskId}/variables",
+            "normalized": "/v1/tasks/{taskId}/variables"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:2dc8713e614d70af3d47f69707003918a0f98429d0ead2ddbd80d89717a22ff1",
+              "name": "taskId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:06a15470aca6e3035e238f282343d684a4d3a862c10851786086d3afa5b96bde": {
+      "candidate_id": "sha256:06a15470aca6e3035e238f282343d684a4d3a862c10851786086d3afa5b96bde",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/TaskController.java",
+      "location": {
+        "start": {
+          "row": 42,
+          "column": 5
+        },
+        "end": {
+          "row": 45,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.TaskController",
+        "name": "updateTaskVariable"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.List",
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CommentDto",
+          "ru.testbed.workflow.dto.TaskDto",
+          "ru.testbed.workflow.dto.TaskSearchRequest",
+          "ru.testbed.workflow.dto.VariableDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.TaskController"
+      },
+      "resolved": {
+        "sha256:c9792276938a9a25718885851a4d4ecae234cfe3de3e6d21bbef3a377902f473": {
+          "operation_id": "sha256:c9792276938a9a25718885851a4d4ecae234cfe3de3e6d21bbef3a377902f473",
+          "http_method": "PUT",
+          "path": {
+            "template": "/v1/tasks/{taskId}/variables/{variableName}",
+            "normalized": "/v1/tasks/{taskId}/variables/{variableName}"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:78b3daa205261e62a053cb257874a7bd2291fb1bda20c24ed70b8838f81ce43e",
+              "name": "taskId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            },
+            {
+              "parameter_id": "sha256:6cdff204736bb73fbb46a67393905502c0c1b4e039d0043396271b0b629824d1",
+              "name": "variableName",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:f5e8be9ebc5824d1e7071bc140c853799c0da4de2558d014a323744de57377b9",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "variable",
+                "value_type": {
+                  "kind": "object",
+                  "title": "VariableDto",
+                  "properties": [
+                    {
+                      "name": "name",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "type",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "value_type": {
+                        "kind": "unknown",
+                        "title": "Object"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:1e585421ebb1e20bff58a8abbbfea688e7a44c6965567badd2232f6a5ae4fdd4": {
+      "candidate_id": "sha256:1e585421ebb1e20bff58a8abbbfea688e7a44c6965567badd2232f6a5ae4fdd4",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/TaskController.java",
+      "location": {
+        "start": {
+          "row": 47,
+          "column": 5
+        },
+        "end": {
+          "row": 50,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.TaskController",
+        "name": "addComment"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.List",
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CommentDto",
+          "ru.testbed.workflow.dto.TaskDto",
+          "ru.testbed.workflow.dto.TaskSearchRequest",
+          "ru.testbed.workflow.dto.VariableDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.TaskController"
+      },
+      "resolved": {
+        "sha256:84f33a1e98d271512f80deb274b540a23801b6e5e9f19bad23e72dfecd1c70b8": {
+          "operation_id": "sha256:84f33a1e98d271512f80deb274b540a23801b6e5e9f19bad23e72dfecd1c70b8",
+          "http_method": "POST",
+          "path": {
+            "template": "/v1/tasks/{taskId}/comments",
+            "normalized": "/v1/tasks/{taskId}/comments"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:941ac669d5ea683a5839d2f931a8778f7be5b64a88565c7d5d177e3c58b1aa96",
+              "name": "taskId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:a3c8513cafe0bd206a3b14a07146d6a2b397e82205dd463bd0fb3ed067cc3472",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "comment",
+                "value_type": {
+                  "kind": "object",
+                  "title": "CommentDto",
+                  "properties": [
+                    {
+                      "name": "id",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "author",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "message",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "attachmentsCount",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "integer"
+                      }
+                    },
+                    {
+                      "name": "createdAt",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:afe4830c09a3723ca86937c025620b08f9372dcd826d988ad939104fa0e86244": {
+      "candidate_id": "sha256:afe4830c09a3723ca86937c025620b08f9372dcd826d988ad939104fa0e86244",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/ProcessInstanceController.java",
+      "location": {
+        "start": {
+          "row": 17,
+          "column": 5
+        },
+        "end": {
+          "row": 20,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.ProcessInstanceController",
+        "name": "startProcess"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.ProcessStartRequest"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.ProcessInstanceController"
+      },
+      "resolved": {
+        "sha256:eb60908c139f160d93fbf7683d89686bea3699f6807b593ef6d9f8fa53215ff9": {
+          "operation_id": "sha256:eb60908c139f160d93fbf7683d89686bea3699f6807b593ef6d9f8fa53215ff9",
+          "http_method": "POST",
+          "path": {
+            "template": "/v1/process-instances",
+            "normalized": "/v1/process-instances"
+          },
+          "confidence": "high",
+          "parameters": [],
+          "request_body": {
+            "request_body_id": "sha256:d6f47806e00f3cb99016b404b8217ee79f65e5c4fc2ba57e22c36d6b784c70f8",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "start",
+                "value_type": {
+                  "kind": "object",
+                  "title": "ProcessStartRequest",
+                  "properties": [
+                    {
+                      "name": "processDefinitionKey",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "businessKey",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "initiator",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "variables",
+                      "value_type": {
+                        "kind": "object",
+                        "title": "Map"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:178921c482d3936d4fffd29295bbe8b35ad0758c0fd0a661c3042fbd0283aac0": {
+      "candidate_id": "sha256:178921c482d3936d4fffd29295bbe8b35ad0758c0fd0a661c3042fbd0283aac0",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/ProcessInstanceController.java",
+      "location": {
+        "start": {
+          "row": 22,
+          "column": 5
+        },
+        "end": {
+          "row": 25,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.ProcessInstanceController",
+        "name": "getProcessVariables"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.util.Map",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.ProcessStartRequest"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.ProcessInstanceController"
+      },
+      "resolved": {
+        "sha256:caeebfed384f784290f952b303e5be083c658414d41f85188a5a428d0fee9471": {
+          "operation_id": "sha256:caeebfed384f784290f952b303e5be083c658414d41f85188a5a428d0fee9471",
+          "http_method": "GET",
+          "path": {
+            "template": "/v1/process-instances/{processInstanceId}/variables",
+            "normalized": "/v1/process-instances/{processInstanceId}/variables"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:bd9c4410481cd320e350f3cd69309fa2511fc764f87ffb2e4d167cdbb12e2de6",
+              "name": "processInstanceId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:f3bd5f2942170179da045b8974452b5ddd2ec03bc54619a244dc016ea76794da": {
+      "candidate_id": "sha256:f3bd5f2942170179da045b8974452b5ddd2ec03bc54619a244dc016ea76794da",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/CourierTrackingController.java",
+      "location": {
+        "start": {
+          "row": 20,
+          "column": 5
+        },
+        "end": {
+          "row": 23,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.CourierTrackingController",
+        "name": "reportLocation"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.time.Instant",
+          "java.util.List",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CourierLocationDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.CourierTrackingController"
+      },
+      "resolved": {
+        "sha256:998a5e73ec01c443474e26502d3b9f3aafb3e61ba7a476dbf4c4f943319bf7f4": {
+          "operation_id": "sha256:998a5e73ec01c443474e26502d3b9f3aafb3e61ba7a476dbf4c4f943319bf7f4",
+          "http_method": "POST",
+          "path": {
+            "template": "/api/couriers/{courierId}/locations",
+            "normalized": "/api/couriers/{courierId}/locations"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:0013e6de136aed355865200a9fa6be312a9780e2b6e507fc79f0eff0a7bb954e",
+              "name": "courierId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:442f8e01d34c758660d9e91307db6317173834e5fecf389b503e69c3292252d6",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "location",
+                "value_type": {
+                  "kind": "object",
+                  "title": "CourierLocationDto",
+                  "properties": [
+                    {
+                      "name": "courierId",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "lat",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "number"
+                      }
+                    },
+                    {
+                      "name": "lng",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "number"
+                      }
+                    },
+                    {
+                      "name": "accuracy",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "number"
+                      }
+                    },
+                    {
+                      "name": "deviceId",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "imei",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "batteryLevel",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "integer"
+                      }
+                    },
+                    {
+                      "name": "recordedAt",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:fabbcc8d5cc62f34cc099bb6aad166ad97f4429f13cc106cf3b94a45b8e4174d": {
+      "candidate_id": "sha256:fabbcc8d5cc62f34cc099bb6aad166ad97f4429f13cc106cf3b94a45b8e4174d",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/CourierTrackingController.java",
+      "location": {
+        "start": {
+          "row": 25,
+          "column": 5
+        },
+        "end": {
+          "row": 28,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.CourierTrackingController",
+        "name": "trackHistory"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.time.Instant",
+          "java.util.List",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.CourierLocationDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.CourierTrackingController"
+      },
+      "resolved": {
+        "sha256:0ac5d708958507f3b2400c1db3aa84abb0353df78d6a0c9147706bc7cb15e0b0": {
+          "operation_id": "sha256:0ac5d708958507f3b2400c1db3aa84abb0353df78d6a0c9147706bc7cb15e0b0",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/couriers/{courierId}/locations",
+            "normalized": "/api/couriers/{courierId}/locations"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:4d829b66776b8a36c20b9a87cc4152690d2fda8f83656174fd17ecab5c346deb",
+              "name": "courierId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            },
+            {
+              "parameter_id": "sha256:d81cc77cc58bafd6dca04f2d985f5303af1c1771bde75a5cd4912956f02b93d4",
+              "name": "from",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            },
+            {
+              "parameter_id": "sha256:c75b2771ac26a8a57dac99489c9dda35c617576ddf7e2a459a6cea3a9c874a21",
+              "name": "to",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "sha256:fd99419a75f701d578c4429c613b096d0feffd0646cbde92a666ad482ae52cfb": {
+      "candidate_id": "sha256:fd99419a75f701d578c4429c613b096d0feffd0646cbde92a666ad482ae52cfb",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/DeliveryController.java",
+      "location": {
+        "start": {
+          "row": 17,
+          "column": 5
+        },
+        "end": {
+          "row": 20,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.DeliveryController",
+        "name": "getDelivery"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.time.LocalDate",
+          "java.util.List",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.DeliveryDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.DeliveryController"
+      },
+      "resolved": {
+        "sha256:0a0747e2199b46d5d9ab5cd3cb5d0b612b0dfa4d0998ef890dd8fbcbb03c5d23": {
+          "operation_id": "sha256:0a0747e2199b46d5d9ab5cd3cb5d0b612b0dfa4d0998ef890dd8fbcbb03c5d23",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/deliveries/{deliveryId}",
+            "normalized": "/api/deliveries/{deliveryId}"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:54fab4c1f40eb90e8476047b57b11c79631d8ca5dc6c91314b85bd34a8c91eea",
+              "name": "deliveryId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:fdbd40fb2e09712ac5e1731573b3380f5f5573e2f7109d32ca6ff4c2a6a8efe8": {
+      "candidate_id": "sha256:fdbd40fb2e09712ac5e1731573b3380f5f5573e2f7109d32ca6ff4c2a6a8efe8",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/DeliveryController.java",
+      "location": {
+        "start": {
+          "row": 22,
+          "column": 5
+        },
+        "end": {
+          "row": 25,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.DeliveryController",
+        "name": "exportDeliveries"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "java.time.LocalDate",
+          "java.util.List",
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RequestParam",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.DeliveryDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.DeliveryController"
+      },
+      "resolved": {
+        "sha256:a4129709a50d08a905b0c7c22b3ab4afa9ac39637f59627f5691e0085375aa6f": {
+          "operation_id": "sha256:a4129709a50d08a905b0c7c22b3ab4afa9ac39637f59627f5691e0085375aa6f",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/deliveries/export",
+            "normalized": "/api/deliveries/export"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:0eef73f190998fe37b014857af51e32cf64d24af43e21726ecc01b4dbef7d583",
+              "name": "date",
+              "in": "query",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ]
+        }
+      }
+    },
+    "sha256:5b3bf0e0a3a0fcb1c412c6b328a130f38e702195661661d6bfe03729fdf14fd0": {
+      "candidate_id": "sha256:5b3bf0e0a3a0fcb1c412c6b328a130f38e702195661661d6bfe03729fdf14fd0",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/WebhookController.java",
+      "location": {
+        "start": {
+          "row": 16,
+          "column": 5
+        },
+        "end": {
+          "row": 19,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.WebhookController",
+        "name": "receive"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestHeader",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.WebhookEventDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.WebhookController"
+      },
+      "resolved": {
+        "sha256:0ad56315d0572b9b1152365ecdd88798e3e564e025579f242aa5f347921c9612": {
+          "operation_id": "sha256:0ad56315d0572b9b1152365ecdd88798e3e564e025579f242aa5f347921c9612",
+          "http_method": "POST",
+          "path": {
+            "template": "/hooks/{source}",
+            "normalized": "/hooks/{source}"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:d2f1ffc4bbeba5a55b4f8f019717abaa1d02a1575df72d453eb1885f876d5eca",
+              "name": "source",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            },
+            {
+              "parameter_id": "sha256:83a40a447ba1313bd4e1574d3caaaf85ce12c79865719b3b54f569721e1d7cbc",
+              "name": "X-Hub-Signature",
+              "in": "header",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": false
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:4ff38497f809bfad0816001d586fd2322e8351ad43fcec37c93b85199efc05fa",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "event",
+                "value_type": {
+                  "kind": "object",
+                  "title": "WebhookEventDto",
+                  "properties": [
+                    {
+                      "name": "eventType",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "payload",
+                      "value_type": {
+                        "kind": "object",
+                        "title": "JsonNode"
+                      }
+                    },
+                    {
+                      "name": "metadata",
+                      "value_type": {
+                        "kind": "object",
+                        "title": "Map"
+                      }
+                    },
+                    {
+                      "name": "receivedAt",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:fec3e662fac0f8b3b89fa872fd244bd7b69614256a4919ba42d3b1b3db53e8aa": {
+      "candidate_id": "sha256:fec3e662fac0f8b3b89fa872fd244bd7b69614256a4919ba42d3b1b3db53e8aa",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/FormController.java",
+      "location": {
+        "start": {
+          "row": 15,
+          "column": 5
+        },
+        "end": {
+          "row": 18,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.FormController",
+        "name": "submit"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.FormSubmissionDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.FormController"
+      },
+      "resolved": {
+        "sha256:26eb37193f236c13ddd16d0c2b64d2d8830b2d9b82a22edd48c95642063463a3": {
+          "operation_id": "sha256:26eb37193f236c13ddd16d0c2b64d2d8830b2d9b82a22edd48c95642063463a3",
+          "http_method": "POST",
+          "path": {
+            "template": "/api/forms/{formId}/submissions",
+            "normalized": "/api/forms/{formId}/submissions"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:ba9e4859c45f66b511d878a09a6611b61c6f04c994166aba7ca3b473757a0ff8",
+              "name": "formId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:623698bbad499f10108d99ac2c47b8e35f240adcb970ba816be8fcb0e40b2a0a",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "submission",
+                "value_type": {
+                  "kind": "object",
+                  "title": "FormSubmissionDto",
+                  "properties": [
+                    {
+                      "name": "formId",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "formData",
+                      "value_type": {
+                        "kind": "object",
+                        "title": "Map"
+                      }
+                    },
+                    {
+                      "name": "submittedBy",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "submittedAt",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:70e357d238c003a7b79961e2e7e0e7f4bd7177ee33bafbc29fc20a34b78ddb7d": {
+      "candidate_id": "sha256:70e357d238c003a7b79961e2e7e0e7f4bd7177ee33bafbc29fc20a34b78ddb7d",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/NotificationController.java",
+      "location": {
+        "start": {
+          "row": 14,
+          "column": 5
+        },
+        "end": {
+          "row": 17,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.NotificationController",
+        "name": "send"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.PostMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.NotificationDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.NotificationController"
+      },
+      "resolved": {
+        "sha256:46dd11d47fbfc68a4a1396b4d3399f58edf4c8978510f609adc4c29bd9c637d5": {
+          "operation_id": "sha256:46dd11d47fbfc68a4a1396b4d3399f58edf4c8978510f609adc4c29bd9c637d5",
+          "http_method": "POST",
+          "path": {
+            "template": "/api/notifications",
+            "normalized": "/api/notifications"
+          },
+          "confidence": "high",
+          "parameters": [],
+          "request_body": {
+            "request_body_id": "sha256:26619fe767bcad206c391d56571c48b78959d7ff66e86a02847e530a8281869a",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "notification",
+                "value_type": {
+                  "kind": "object",
+                  "title": "NotificationDto",
+                  "properties": [
+                    {
+                      "name": "recipient",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "subject",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "body",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "messageId",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "reasonCode",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "template",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sha256:77cfa2d4464907a58845ac68a4aeeb1b6316519b5560428a1750c31fb44c8d3a": {
+      "candidate_id": "sha256:77cfa2d4464907a58845ac68a4aeeb1b6316519b5560428a1750c31fb44c8d3a",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/IntegrationController.java",
+      "location": {
+        "start": {
+          "row": 17,
+          "column": 5
+        },
+        "end": {
+          "row": 20,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.IntegrationController",
+        "name": "getSettings"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.IntegrationSettingsDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.IntegrationController"
+      },
+      "resolved": {
+        "sha256:7ddedfa1ef994c9f69672dd721409801a46894fe50116371178455c7229ea3a5": {
+          "operation_id": "sha256:7ddedfa1ef994c9f69672dd721409801a46894fe50116371178455c7229ea3a5",
+          "http_method": "GET",
+          "path": {
+            "template": "/api/integrations/{integrationId}/settings",
+            "normalized": "/api/integrations/{integrationId}/settings"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:54370b86e2b8d19e5f79e57bd9cab05a5ebd5fd26c1669778404fd822606b343",
+              "name": "integrationId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ]
+        }
+      }
+    },
+    "sha256:5b4f926f0d0c8264238afabb1eb5dc54e3777746b6148d1e19e52c6142032bcb": {
+      "candidate_id": "sha256:5b4f926f0d0c8264238afabb1eb5dc54e3777746b6148d1e19e52c6142032bcb",
+      "candidate_stage": "L1",
+      "language": "java",
+      "framework": "spring",
+      "kind": "spring.mvc.annotation_method",
+      "file_path": "src/main/java/ru/testbed/workflow/controller/IntegrationController.java",
+      "location": {
+        "start": {
+          "row": 22,
+          "column": 5
+        },
+        "end": {
+          "row": 25,
+          "column": 5
+        }
+      },
+      "handler_hint": {
+        "container": "ru.testbed.workflow.controller.IntegrationController",
+        "name": "updateSettings"
+      },
+      "context_hint": {
+        "package": "ru.testbed.workflow.controller",
+        "imports": [
+          "org.springframework.http.ResponseEntity",
+          "org.springframework.web.bind.annotation.GetMapping",
+          "org.springframework.web.bind.annotation.PathVariable",
+          "org.springframework.web.bind.annotation.PutMapping",
+          "org.springframework.web.bind.annotation.RequestBody",
+          "org.springframework.web.bind.annotation.RequestMapping",
+          "org.springframework.web.bind.annotation.RestController",
+          "ru.testbed.workflow.dto.IntegrationSettingsDto"
+        ],
+        "static_imports": [],
+        "enclosing_type_fqn": "ru.testbed.workflow.controller.IntegrationController"
+      },
+      "resolved": {
+        "sha256:4faa25dfa5b9f96e6209a112d6c3cf4e689554b8d8d35efb93caacdf23168db1": {
+          "operation_id": "sha256:4faa25dfa5b9f96e6209a112d6c3cf4e689554b8d8d35efb93caacdf23168db1",
+          "http_method": "PUT",
+          "path": {
+            "template": "/api/integrations/{integrationId}/settings",
+            "normalized": "/api/integrations/{integrationId}/settings"
+          },
+          "confidence": "high",
+          "parameters": [
+            {
+              "parameter_id": "sha256:212713767e6d7646731ca827c990a2f9b9a3139e9fc74806ec9477955ceeb45f",
+              "name": "integrationId",
+              "in": "path",
+              "value_type": {
+                "kind": "primitive",
+                "title": "string"
+              },
+              "required": true
+            }
+          ],
+          "request_body": {
+            "request_body_id": "sha256:8c65896dde03a21a86091a357da62d508dbf23bf9fbc8cb4a794330dcbdec246",
+            "mode": "single",
+            "parts": [
+              {
+                "name": "settings",
+                "value_type": {
+                  "kind": "object",
+                  "title": "IntegrationSettingsDto",
+                  "properties": [
+                    {
+                      "name": "dataSource",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "database",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "contentType",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "metadataVersion",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "endpointUrl",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "string"
+                      }
+                    },
+                    {
+                      "name": "timeoutMs",
+                      "value_type": {
+                        "kind": "primitive",
+                        "title": "integer"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "const_decls": [
+    {
+      "symbol": "DEFAULT_ASSIGNEE",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "ivan.petrov",
+      "location": {
+        "start": {
+          "row": 9,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "ESCALATION_EMAIL",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "escalation@company.example",
+      "location": {
+        "start": {
+          "row": 10,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "SAMPLE_VARIABLES_JSON",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "{\"clientName\":\"Петров Иван\",\"phone\":\"+79161234567\",\"passport\":\"4510 123456\"}",
+      "location": {
+        "start": {
+          "row": 11,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "CALLBACK_HOST",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "198.51.100.23",
+      "location": {
+        "start": {
+          "row": 12,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "INTERNAL_BROKER",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "172.20.1.15:9092",
+      "location": {
+        "start": {
+          "row": 13,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "REQUEST_ID_SAMPLE",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "550e8400-e29b-41d4-a716-446655440000",
+      "location": {
+        "start": {
+          "row": 14,
+          "column": 5
+        }
+      }
+    },
+    {
+      "symbol": "ENGINE_VERSION",
+      "file_path": "src/main/java/ru/testbed/workflow/config/WorkflowDefaults.java",
+      "expression": "4.2.0.1",
+      "location": {
+        "start": {
+          "row": 15,
+          "column": 5
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+openapi: 3.0.3
+info:
+  title: SDD testbed — процессы и доставка
+  version: 1.0.0
+  description: Сгенерировано из manifest.yaml (sdd-testbed). Не править руками.
+servers:
+- url: http://localhost:8084
+paths:
+  /v1/tasks/{taskId}:
+    get:
+      operationId: getTask
+      tags:
+      - TaskController
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskDto'
+  /v1/tasks/search:
+    post:
+      operationId: searchTasks
+      tags:
+      - TaskController
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskSearchRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskDto'
+  /v1/tasks/{taskId}/complete:
+    post:
+      operationId: completeTask
+      tags:
+      - TaskController
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '204':
+          description: No Content
+  /v1/tasks/{taskId}/variables:
+    get:
+      operationId: getTaskVariables
+      tags:
+      - TaskController
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VariableDto'
+  /v1/tasks/{taskId}/variables/{variableName}:
+    put:
+      operationId: updateTaskVariable
+      tags:
+      - TaskController
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariableDto'
+      responses:
+        '204':
+          description: No Content
+  /v1/tasks/{taskId}/comments:
+    post:
+      operationId: addComment
+      tags:
+      - TaskController
+      parameters:
+      - name: taskId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentDto'
+  /v1/process-instances:
+    post:
+      operationId: startProcess
+      tags:
+      - ProcessInstanceController
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessStartRequest'
+      responses:
+        '204':
+          description: No Content
+  /v1/process-instances/{processInstanceId}/variables:
+    get:
+      operationId: getProcessVariables
+      tags:
+      - ProcessInstanceController
+      parameters:
+      - name: processInstanceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /api/couriers/{courierId}/locations:
+    post:
+      operationId: reportLocation
+      tags:
+      - CourierTrackingController
+      parameters:
+      - name: courierId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CourierLocationDto'
+      responses:
+        '204':
+          description: No Content
+    get:
+      operationId: trackHistory
+      tags:
+      - CourierTrackingController
+      parameters:
+      - name: courierId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CourierLocationDto'
+  /api/deliveries/{deliveryId}:
+    get:
+      operationId: getDelivery
+      tags:
+      - DeliveryController
+      parameters:
+      - name: deliveryId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryDto'
+  /api/deliveries/export:
+    get:
+      operationId: exportDeliveries
+      tags:
+      - DeliveryController
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeliveryDto'
+  /hooks/{source}:
+    post:
+      operationId: receive
+      tags:
+      - WebhookController
+      parameters:
+      - name: source
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Hub-Signature
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookEventDto'
+      responses:
+        '204':
+          description: No Content
+  /api/forms/{formId}/submissions:
+    post:
+      operationId: submit
+      tags:
+      - FormController
+      parameters:
+      - name: formId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormSubmissionDto'
+      responses:
+        '204':
+          description: No Content
+  /api/notifications:
+    post:
+      operationId: send
+      tags:
+      - NotificationController
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationDto'
+      responses:
+        '204':
+          description: No Content
+  /api/integrations/{integrationId}/settings:
+    get:
+      operationId: getSettings
+      tags:
+      - IntegrationController
+      parameters:
+      - name: integrationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationSettingsDto'
+    put:
+      operationId: updateSettings
+      tags:
+      - IntegrationController
+      parameters:
+      - name: integrationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationSettingsDto'
+      responses:
+        '204':
+          description: No Content
+components:
+  schemas:
+    TaskDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        assignee:
+          type: string
+        candidateUsers:
+          type: array
+          items:
+            type: string
+        candidateGroups:
+          type: array
+          items:
+            type: string
+        owner:
+          type: string
+        createdBy:
+          type: string
+        dueDate:
+          type: string
+          format: date-time
+        priority:
+          type: integer
+          format: int32
+        description:
+          type: string
+        variables:
+          type: object
+          additionalProperties: true
+        formKey:
+          type: string
+        processInstanceId:
+          type: string
+    TaskSearchRequest:
+      type: object
+      properties:
+        assignee:
+          type: string
+        completedBy:
+          type: string
+        candidateUserId:
+          type: string
+        candidateGroupId:
+          type: string
+        processDefinitionKey:
+          type: string
+        ownership:
+          type: string
+        createdAfter:
+          type: string
+          format: date-time
+    ProcessStartRequest:
+      type: object
+      properties:
+        processDefinitionKey:
+          type: string
+        businessKey:
+          type: string
+        initiator:
+          type: string
+        variables:
+          type: object
+          additionalProperties: true
+    VariableDto:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        value:
+          type: object
+    CommentDto:
+      type: object
+      properties:
+        id:
+          type: string
+        author:
+          type: string
+        message:
+          type: string
+        attachmentsCount:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+    CourierLocationDto:
+      type: object
+      properties:
+        courierId:
+          type: string
+        lat:
+          type: number
+        lng:
+          type: number
+        accuracy:
+          type: number
+        deviceId:
+          type: string
+        imei:
+          type: string
+        batteryLevel:
+          type: integer
+          format: int32
+        recordedAt:
+          type: string
+          format: date-time
+    DeliveryDto:
+      type: object
+      properties:
+        id:
+          type: string
+        recipientName:
+          type: string
+        recipientPhone:
+          type: string
+        deliveryAddress:
+          type: string
+        coordinates:
+          type: string
+        courierComment:
+          type: string
+        status:
+          type: string
+    WebhookEventDto:
+      type: object
+      properties:
+        eventType:
+          type: string
+        payload:
+          type: object
+        metadata:
+          type: object
+          additionalProperties: true
+        receivedAt:
+          type: string
+          format: date-time
+    FormSubmissionDto:
+      type: object
+      properties:
+        formId:
+          type: string
+        formData:
+          type: object
+          additionalProperties: true
+        submittedBy:
+          type: string
+        submittedAt:
+          type: string
+          format: date-time
+    NotificationDto:
+      type: object
+      properties:
+        recipient:
+          type: string
+        subject:
+          type: string
+        body:
+          type: string
+        messageId:
+          type: string
+        reasonCode:
+          type: string
+        template:
+          type: string
+    IntegrationSettingsDto:
+      type: object
+      properties:
+        dataSource:
+          type: string
+        database:
+          type: string
+        contentType:
+          type: string
+        metadataVersion:
+          type: string
+        endpointUrl:
+          type: string
+        timeoutMs:
+          type: integer
+          format: int32

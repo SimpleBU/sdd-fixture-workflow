@@ -1,0 +1,257 @@
+# ============================================================
+# workflow — BPM-движок с доставкой. Фокус: DYNAMIC (переменные процессов,
+# Map/JsonNode/Object, свободный текст), PII_INDIRECT (участники процессов,
+# геолокация, устройства). Ближе всего к эталону Activiti, но на другом коде.
+# Уязвимости: переменные процессов с ПД отдаются целиком, трекинг курьеров
+# без ограничений, вебхуки принимают что угодно.
+# ============================================================
+app: workflow
+title: "SDD testbed — процессы и доставка"
+package: ru.testbed.workflow
+port: 8084
+
+dtos:
+  TaskDto:
+    - [id, String]
+    - [name, String]
+    - [assignee, String, PII_INDIRECT]
+    - [candidateUsers, List<String>, PII_INDIRECT hard, "candidate_users — шаблон знает candidate_user(_id)"]
+    - [candidateGroups, List<String>, GRAY]
+    - [owner, String, PII_INDIRECT]
+    - [createdBy, String, PII_INDIRECT]
+    - [dueDate, Instant]
+    - [priority, Integer]
+    - [description, String, DYNAMIC]
+    - [variables, "Map<String, Object>", DYNAMIC]
+    - [formKey, String]
+    - [processInstanceId, String]
+
+  TaskSearchRequest:
+    - [assignee, String, PII_INDIRECT]
+    - [completedBy, String, PII_INDIRECT]
+    - [candidateUserId, String, PII_INDIRECT]
+    - [candidateGroupId, String, GRAY, "группа, не человек; в критериях SDD-ENG-3 упоминается — спорно"]
+    - [processDefinitionKey, String]
+    - [ownership, String, NONE trap, "тип владения задачей (из no_match правила)"]
+    - [createdAfter, Instant]
+
+  ProcessStartRequest:
+    - [processDefinitionKey, String]
+    - [businessKey, String, GRAY, "часто номер договора или клиента"]
+    - [initiator, String, PII_INDIRECT]
+    - [variables, "Map<String, Object>", DYNAMIC]
+
+  VariableDto:
+    - [name, String]
+    - [type, String]
+    - [value, Object, DYNAMIC]
+
+  CommentDto:
+    - [id, String]
+    - [author, String, PII_INDIRECT]
+    - [message, String, DYNAMIC]
+    - [attachmentsCount, Integer]
+    - [createdAt, Instant]
+
+  CourierLocationDto:
+    - [courierId, String, PII_INDIRECT hard, "courier_id — нет в списке идентификаторов"]
+    - [lat, BigDecimal, PII_INDIRECT]
+    - [lng, BigDecimal, PII_INDIRECT]
+    - [accuracy, BigDecimal]
+    - [deviceId, String, PII_INDIRECT]
+    - [imei, String, PII_INDIRECT]
+    - [batteryLevel, Integer]
+    - [recordedAt, Instant]
+
+  DeliveryDto:
+    - [id, String]
+    - [recipientName, String, PII_DIRECT hard]
+    - [recipientPhone, String, PII_DIRECT hard]
+    - [deliveryAddress, String, PII_DIRECT hard, "delivery_address — шаблон знает home/mailing/postal, но не delivery"]
+    - [coordinates, String, PII_INDIRECT]
+    - [courierComment, String, DYNAMIC hard]
+    - [status, String]
+
+  WebhookEventDto:
+    - [eventType, String]
+    - [payload, JsonNode, DYNAMIC]
+    - [metadata, "Map<String, Object>", DYNAMIC]
+    - [receivedAt, Instant]
+
+  FormSubmissionDto:
+    - [formId, String]
+    - [formData, "Map<String, Object>", DYNAMIC]
+    - [submittedBy, String, PII_INDIRECT hard, "submitted_by — нет в списке участников"]
+    - [submittedAt, Instant]
+
+  NotificationDto:
+    - [recipient, String, PII_DIRECT hard, "адрес получателя (email/телефон)"]
+    - [subject, String, NONE trap, "тема письма, не субъект"]
+    - [body, String, DYNAMIC]
+    - [messageId, String, NONE trap]
+    - [reasonCode, String, NONE trap]
+    - [template, String, NONE trap]
+
+  IntegrationSettingsDto:
+    - [dataSource, String, NONE trap]
+    - [database, String, NONE trap]
+    - [contentType, String, NONE trap]
+    - [metadataVersion, String, NONE trap]
+    - [endpointUrl, String]
+    - [timeoutMs, Integer]
+
+controllers:
+  - class: TaskController
+    base: /v1/tasks
+    endpoints:
+      - op: getTask
+        http: GET
+        path: /{taskId}
+        params: [[taskId, path, String]]
+        returns: TaskDto
+        expect: []
+        allow: [DYNAMIC, PII_INDIRECT]
+      - op: searchTasks
+        http: POST
+        path: /search
+        body: [query, TaskSearchRequest]
+        returns: List<TaskDto>
+        expect: []
+        allow: [DYNAMIC]
+        bulk: true
+      - op: completeTask
+        http: POST
+        path: /{taskId}/complete
+        params: [[taskId, path, String]]
+        body: [variables, "Map<String, Object>", DYNAMIC]
+        expect: [DYNAMIC]
+      - op: getTaskVariables
+        http: GET
+        path: /{taskId}/variables
+        params: [[taskId, path, String]]
+        returns: List<VariableDto>
+        expect: [DYNAMIC]
+      - op: updateTaskVariable
+        http: PUT
+        path: /{taskId}/variables/{variableName}
+        params:
+          - [taskId, path, String]
+          - [variableName, path, String]
+        body: [variable, VariableDto]
+        expect: [DYNAMIC]
+      - op: addComment
+        http: POST
+        path: /{taskId}/comments
+        params: [[taskId, path, String]]
+        body: [comment, CommentDto]
+        returns: CommentDto
+        expect: []
+        allow: [DYNAMIC]
+
+  - class: ProcessInstanceController
+    base: /v1/process-instances
+    endpoints:
+      - op: startProcess
+        http: POST
+        body: [start, ProcessStartRequest]
+        expect: []
+        allow: [DYNAMIC]
+      - op: getProcessVariables
+        http: GET
+        path: /{processInstanceId}/variables
+        params: [[processInstanceId, path, String]]
+        returns: "Map<String, Object>"
+        returns_label: ["DYNAMIC", "все переменные процесса"]
+        expect: [DYNAMIC]
+
+  - class: CourierTrackingController
+    base: /api/couriers/{courierId}/locations
+    doc: "Трекинг курьеров. Ни путь, ни класс не указывают на геоданные."
+    endpoints:
+      - op: reportLocation
+        http: POST
+        params: [[courierId, path, String, PII_INDIRECT hard]]
+        body: [location, CourierLocationDto]
+        expect: [PII_INDIRECT]
+      - op: trackHistory
+        http: GET
+        params:
+          - [courierId, path, String, PII_INDIRECT hard]
+          - [from, query, Instant]
+          - [to, query, Instant]
+        returns: List<CourierLocationDto>
+        expect: [PII_INDIRECT]
+
+  - class: DeliveryController
+    base: /api/deliveries
+    endpoints:
+      - op: getDelivery
+        http: GET
+        path: /{deliveryId}
+        params: [[deliveryId, path, String]]
+        returns: DeliveryDto
+        expect: [PII_DIRECT]
+      - op: exportDeliveries
+        http: GET
+        path: /export
+        params: [[date, query, LocalDate]]
+        returns: List<DeliveryDto>
+        expect: [PII_DIRECT]
+        bulk: true
+
+  - class: WebhookController
+    base: /hooks/{source}
+    endpoints:
+      - op: receive
+        http: POST
+        params:
+          - [source, path, String]
+          - [X-Hub-Signature, header, String, GRAY]
+        body: [event, WebhookEventDto]
+        expect: [DYNAMIC]
+
+  - class: FormController
+    base: /api/forms/{formId}/submissions
+    endpoints:
+      - op: submit
+        http: POST
+        params: [[formId, path, String]]
+        body: [submission, FormSubmissionDto]
+        expect: [DYNAMIC]
+
+  - class: NotificationController
+    base: /api/notifications
+    endpoints:
+      - op: send
+        http: POST
+        body: [notification, NotificationDto]
+        expect: []
+        allow: [DYNAMIC, PII_DIRECT]
+
+  - class: IntegrationController
+    base: /api/integrations
+    doc: "Ловушки: dataSource, database, contentType, metadataVersion."
+    endpoints:
+      - op: getSettings
+        http: GET
+        path: /{integrationId}/settings
+        params: [[integrationId, path, String]]
+        returns: IntegrationSettingsDto
+        expect: []
+      - op: updateSettings
+        http: PUT
+        path: /{integrationId}/settings
+        params: [[integrationId, path, String]]
+        body: [settings, IntegrationSettingsDto]
+        expect: []
+
+constants:
+  - class: WorkflowDefaults
+    items:
+      - [DEFAULT_ASSIGNEE, "ivan.petrov", PII_INDIRECT hard, "логин сотрудника; распознать можно только по имени константы"]
+      - [ESCALATION_EMAIL, "escalation@company.example", GRAY, "служебный ящик"]
+      - [SAMPLE_VARIABLES_JSON, "{\"clientName\":\"Петров Иван\",\"phone\":\"+79161234567\",\"passport\":\"4510 123456\"}", PII_DIRECT, "ПД внутри JSON-строки"]
+      - [CALLBACK_HOST, "198.51.100.23", NONE trap, "IP сервера колбэков, не пользователя"]
+      - [INTERNAL_BROKER, "172.20.1.15:9092", NONE]
+      - [REQUEST_ID_SAMPLE, "550e8400-e29b-41d4-a716-446655440000", NONE]
+      - [ENGINE_VERSION, "4.2.0.1", NONE trap, "версия похожа на IPv4"]
